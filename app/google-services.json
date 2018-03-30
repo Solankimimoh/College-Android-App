@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "250237213774",
+    "firebase_url": "https://rccollege-44966.firebaseio.com",
+    "project_id": "rccollege-44966",
+    "storage_bucket": "rccollege-44966.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:250237213774:android:99ab8f263e8abfa6",
+        "android_client_info": {
+          "package_name": "com.example.rctechnical.rctechnical"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "250237213774-t36g2orvne0calhr5lc95behahk0tq0a.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.rctechnical.rctechnical",
+            "certificate_hash": "f7f4f648b701b5c5c14b7add086a93f52e8082d0"
+          }
+        },
+        {
+          "client_id": "250237213774-9duaspdilpso11e3av7p369v81gfkdse.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCPs1kSUS1kv4aRTwhM5nvw-H08W9mR0JA"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "250237213774-9duaspdilpso11e3av7p369v81gfkdse.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
