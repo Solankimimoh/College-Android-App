@@ -62,6 +62,7 @@ public class StudentReuqestListActivity extends AppCompatActivity implements Ada
         firebaseAuth = FirebaseAuth.getInstance();
         initView();
 
+        progressDialog.show();
         getFacultyDepartmentName();
         studentArrayList = new ArrayList<>();
 
@@ -95,7 +96,7 @@ public class StudentReuqestListActivity extends AppCompatActivity implements Ada
                     }
                 }
                 studentListArrayAdapter.notifyDataSetChanged();
-                progressDialog.hide();
+                progressDialog.dismiss();
 
             }
 

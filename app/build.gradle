@@ -25,6 +25,9 @@ dependencies {
     implementation 'com.android.support.constraint:constraint-layout:1.0.2'
     implementation 'com.basgeekball:awesome-validation:3.0'
     implementation 'com.google.firebase:firebase-storage:9.8.0'
+    implementation 'com.mcxiaoke.volley:library:1.0.19'
+    //noinspection GradleCompatible
+    implementation 'com.google.firebase:firebase-messaging:9.8.0'
     implementation 'com.google.firebase:firebase-database:9.8.0'
     implementation 'com.google.firebase:firebase-auth:9.8.0'
     implementation 'com.google.android.gms:play-services-maps:9.8.0'
