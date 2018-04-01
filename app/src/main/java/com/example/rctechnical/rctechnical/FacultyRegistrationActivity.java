@@ -134,7 +134,7 @@ public class FacultyRegistrationActivity extends AppCompatActivity implements Vi
                             if (databaseError != null) {
                                 Toast.makeText(FacultyRegistrationActivity.this, databaseError.toString(), Toast.LENGTH_SHORT).show();
                             } else {
-                                Toast.makeText(FacultyRegistrationActivity.this, "Success ! Admin verify your account soon!", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(FacultyRegistrationActivity.this, "Success !  your account Created!", Toast.LENGTH_SHORT).show();
                                 Intent gotoLogin = new Intent(FacultyRegistrationActivity.this, LoginActivity.class);
                                 startActivity(gotoLogin);
                                 progressDialog.hide();

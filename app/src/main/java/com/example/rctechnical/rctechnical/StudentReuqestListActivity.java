@@ -14,6 +14,7 @@ import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.widget.Toolbar;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
@@ -62,21 +63,21 @@ public class StudentReuqestListActivity extends AppCompatActivity implements Ada
         initView();
 
         getFacultyDepartmentName();
-
         studentArrayList = new ArrayList<>();
+
         studentListArrayAdapter = new ArrayAdapter<String>(StudentReuqestListActivity.this, R.layout.row_student_request_layout, R.id.row_layout_category_categoryname_tv, studentArrayList);
         studentListview.setAdapter(studentListArrayAdapter);
 
-        progressDialog.show();
+
         mDatabase.child(AppConstant.FIREBASE_TABLE_STUDNET).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
+
 
                 for (DataSnapshot categoryList : dataSnapshot.getChildren()) {
 
                     Log.e("TAG - CAT", categoryList.child(AppConstant.FIREBASE_DEPARTMENT).getValue().toString() + "===" + categoryList.child(AppConstant.FIREBASE_DB_ISACTIVATED).getValue());
                     Log.e("TAG - EMAIL", categoryList.child(AppConstant.FIREBASE_TABLE_EMAIL).getValue().toString());
-
 
                     if (categoryList.child(AppConstant.FIREBASE_DEPARTMENT).getValue().equals(departmentName)) {
                         studentListview.setVisibility(View.VISIBLE);
@@ -87,13 +88,11 @@ public class StudentReuqestListActivity extends AppCompatActivity implements Ada
                         Log.e("TAG _ACTIVATED", isActivated + "");
                         if (!isActivated) {
                             studentArrayList.add(categoryList.child(AppConstant.FIREBASE_TABLE_EMAIL).getValue().toString());
+                        } else {
+                            Toast.makeText(StudentReuqestListActivity.this, "No Data Avialable", Toast.LENGTH_SHORT).show();
                         }
 
-                    } else {
-                        studentListview.setVisibility(View.INVISIBLE);
-                        relativeLayout.setBackground(getResources().getDrawable(R.drawable.data_not_found));
                     }
-
                 }
                 studentListArrayAdapter.notifyDataSetChanged();
                 progressDialog.hide();
@@ -105,6 +104,7 @@ public class StudentReuqestListActivity extends AppCompatActivity implements Ada
 
             }
         });
+
 
     }
 
@@ -139,11 +139,12 @@ public class StudentReuqestListActivity extends AppCompatActivity implements Ada
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
-
         Toast.makeText(this, "ITEM CLICKED", Toast.LENGTH_SHORT).show();
         studentDetailsDialog = new AppCompatDialog(StudentReuqestListActivity.this, R.style.Theme_AppCompat_Light_Dialog_MinWidth);
         studentDetailsDialog.setContentView(R.layout.dialog_layout);
         studentDetailsDialog.setTitle("Student Details");
+
+        studentDetailsDialog.show();
 
         final String email = parent.getItemAtPosition(position).toString();
 
@@ -181,7 +182,6 @@ public class StudentReuqestListActivity extends AppCompatActivity implements Ada
             }
         });
 
-        studentDetailsDialog.show();
 
         studentCancleBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -197,10 +197,22 @@ public class StudentReuqestListActivity extends AppCompatActivity implements Ada
                 mDatabase.child(AppConstant.FIREBASE_TABLE_STUDNET).child(studentPushKey).child(AppConstant.FIREBASE_DB_ISACTIVATED).setValue(true);
                 studentArrayList.clear();
                 studentListArrayAdapter.notifyDataSetChanged();
-
-
             }
         });
 
+    }
+
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        if (progressDialog != null) {
+            progressDialog.dismiss();
+        }
+        if (studentDetailsDialog != null) {
+            studentDetailsDialog.dismiss();
+        }
+
+        studentListArrayAdapter.clear();
     }
 }

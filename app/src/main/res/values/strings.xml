@@ -46,6 +46,15 @@
     <string name="google_maps_key">AIzaSyCcCHxsQPXtn4Z5ZXm_YKd3Jgdd_3SKsy8</string>
 
     <string name="about">To establish and manage institutions with an environment in which new ideas, delivery strategies and scholarship flourish and from where leaders and innovators of tomorrow shall emerge</string>
+    <string name="student_aprove">Student Account Request</string>
+    <string name="notification_title">write title</string>
+    <string name="notification_description">write description</string>
+    <string name="filename">write file name</string>
+    <string name="file_note">*blanck file title field if not required</string>
+    <string name="choose_file">choose file</string>
+    <string name="send">Send</string>
+    <string name="nofile_selected">No File Selected</string>
+    <string name="send_notification">Send Notification</string>
 
 
     <!--Department Array-->

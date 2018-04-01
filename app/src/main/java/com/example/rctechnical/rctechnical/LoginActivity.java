@@ -58,7 +58,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
 //        if (auth.getCurrentUser() != null) {
 //            auth.signOut();
-//            Intent intent = new Intent(LoginActivity.this, HomeActivity.class);
+//            Intent intent = new Intent(LoginActivity.this, HomeScreenActivity.class);
 //            startActivity(intent);
 //            finish();
 //        }
@@ -188,7 +188,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                         Toast.makeText(LoginActivity.this, "Email ID is not verified yet ! ", Toast.LENGTH_SHORT).show();
                     } else {
                         progressDialog.hide();
-                        Intent gotoHomeScreen = new Intent(LoginActivity.this, HomeActivity.class);
+                        Intent gotoHomeScreen = new Intent(LoginActivity.this, HomeScreenActivity.class);
                         gotoHomeScreen.putExtra("KEY_LOGIN_TYPE", firebaseTable);
                         startActivity(gotoHomeScreen);
                         finish();
