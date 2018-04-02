@@ -23,6 +23,7 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.messaging.FirebaseMessaging;
 
 import static com.basgeekball.awesomevalidation.ValidationStyle.COLORATION;
 
@@ -187,7 +188,8 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                         progressDialog.hide();
                         Toast.makeText(LoginActivity.this, "Email ID is not verified yet ! ", Toast.LENGTH_SHORT).show();
                     } else {
-                        progressDialog.hide();
+                        progressDialog.dismiss();
+
                         Intent gotoHomeScreen = new Intent(LoginActivity.this, HomeScreenActivity.class);
                         gotoHomeScreen.putExtra("KEY_LOGIN_TYPE", firebaseTable);
                         startActivity(gotoHomeScreen);

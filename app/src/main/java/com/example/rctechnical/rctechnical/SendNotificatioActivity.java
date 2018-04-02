@@ -142,6 +142,7 @@ public class SendNotificatioActivity extends AppCompatActivity implements View.O
                         Toast.makeText(SendNotificatioActivity.this, databaseError.toString(), Toast.LENGTH_SHORT).show();
                     } else {
                         Toast.makeText(SendNotificatioActivity.this, "Success ! Notification Send without Attachment!", Toast.LENGTH_SHORT).show();
+                        sendFCMPush();
                         finish();
                     }
                 }
@@ -153,8 +154,8 @@ public class SendNotificatioActivity extends AppCompatActivity implements View.O
     private void sendFCMPush() {
 
         final String Legacy_SERVER_KEY = "AIzaSyDJQkLugdCA_-IGBuWDXf6opS-7WF1syYs";
-        String msg = notificationDescriptioEd.getText().toString().trim();
-        String title = notificationTitleEd.getText().toString().trim();
+        String msg =  notificationTitleEd.getText().toString().trim();
+        String title =notificationDescriptioEd.getText().toString().trim();
         //  String token = FCM_RECEIVER_TOKEN;
 
         JSONObject obj = null;
@@ -177,7 +178,9 @@ public class SendNotificatioActivity extends AppCompatActivity implements View.O
             dataobjData.put("text", msg);
             dataobjData.put("title", title);
 
-            obj.put("to", "/topics/computer");
+            final String topicname = departmentName.replace(" ", "_");
+
+            obj.put("to", "/topics/" + topicname);
             //obj.put("to", token);
             obj.put("priority", "high");
 
@@ -288,6 +291,7 @@ public class SendNotificatioActivity extends AppCompatActivity implements View.O
                                     Toast.makeText(SendNotificatioActivity.this, databaseError.toString(), Toast.LENGTH_SHORT).show();
                                 } else {
                                     Toast.makeText(SendNotificatioActivity.this, "Success ! Notification Send.!", Toast.LENGTH_SHORT).show();
+                                    sendFCMPush();
                                     finish();
                                 }
                             }

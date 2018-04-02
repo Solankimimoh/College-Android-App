@@ -23,6 +23,7 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.messaging.FirebaseMessaging;
 
 import java.util.ArrayList;
 
@@ -75,8 +76,15 @@ public class HomeScreenActivity extends AppCompatActivity
                                 Toast.makeText(HomeScreenActivity.this, "Welcome " + dataSnapshot.child(auth.getCurrentUser().getUid()).child(AppConstant.FIREBASE_TABLE_FULLNAME).getValue().toString(), Toast.LENGTH_SHORT).show();
                                 final String userName = dataSnapshot.child(auth.getCurrentUser().getUid()).child(AppConstant.FIREBASE_TABLE_FULLNAME).getValue().toString();
                                 final String userEmail = dataSnapshot.child(auth.getCurrentUser().getUid()).child(AppConstant.FIREBASE_TABLE_EMAIL).getValue().toString();
+                                final String department = dataSnapshot.child(auth.getCurrentUser().getUid()).child(AppConstant.FIREBASE_DEPARTMENT).getValue().toString();
                                 userNameTv.setText(userName);
                                 userEmailTv.setText(userEmail);
+
+                                final String topicName = department.replace(" ", "_");
+                                FirebaseMessaging.getInstance().subscribeToTopic(topicName);
+
+                                Log.e("DEPART", department);
+                                Toast.makeText(HomeScreenActivity.this, "" + department, Toast.LENGTH_SHORT).show();
                             }
 
                             @Override
@@ -97,6 +105,13 @@ public class HomeScreenActivity extends AppCompatActivity
                                 Toast.makeText(HomeScreenActivity.this, "Welcome " + dataSnapshot.child(auth.getCurrentUser().getUid()).child(AppConstant.FIREBASE_TABLE_FULLNAME).getValue().toString(), Toast.LENGTH_SHORT).show();
                                 final String userName = dataSnapshot.child(auth.getCurrentUser().getUid()).child(AppConstant.FIREBASE_TABLE_FULLNAME).getValue().toString();
                                 final String userEmail = dataSnapshot.child(auth.getCurrentUser().getUid()).child(AppConstant.FIREBASE_TABLE_EMAIL).getValue().toString();
+                                final String department = dataSnapshot.child(auth.getCurrentUser().getUid()).child(AppConstant.FIREBASE_DEPARTMENT).getValue().toString();
+
+                                final String topicName = department.replace(" ", "_");
+                                FirebaseMessaging.getInstance().subscribeToTopic(topicName);
+
+                                Log.e("DEPART", department);
+                                Toast.makeText(HomeScreenActivity.this, "" + department, Toast.LENGTH_SHORT).show();
                                 userNameTv.setText(userName);
                                 userEmailTv.setText(userEmail);
                             }
