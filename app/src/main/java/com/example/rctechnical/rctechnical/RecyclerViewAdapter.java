@@ -3,6 +3,7 @@ package com.example.rctechnical.rctechnical;
 import android.content.Context;
 import android.graphics.Color;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -46,6 +47,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
         public void setData(HomeMenuItemModel item) {
             this.item = item;
+
 
             textView.setText(item.text);
             imageView.setImageResource(item.drawable);

@@ -57,6 +57,8 @@
     <string name="send_notification">Send Notification</string>
     <string name="downloadfile">Download File</string>
     <string name="details">Details</string>
+    <string name="faculty_designation">DESIGNATION</string>
+    <string name="faculty_qualification">QUALIFICATION</string>
 
 
     <!--Department Array-->

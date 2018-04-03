@@ -77,10 +77,10 @@
                         </option>
                         <option name="values">
                           <map>
+                            <entry key="assetSourceType" value="FILE" />
                             <entry key="color" value="9c9c9c" />
-                            <entry key="outputName" value="vector_info" />
-                            <entry key="overrideSize" value="true" />
-                            <entry key="sourceFile" value="C:\Users\solan" />
+                            <entry key="outputName" value="vector_interest" />
+                            <entry key="sourceFile" value="C:\Users\solan\Desktop\Brand India Magazin\point-of-interest.svg" />
                           </map>
                         </option>
                       </PersistentState>
