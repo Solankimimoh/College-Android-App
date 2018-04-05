@@ -23,11 +23,10 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-import com.google.firebase.messaging.FirebaseMessaging;
 
 import java.util.ArrayList;
 
-public class HomeScreenActivity extends AppCompatActivity
+public class HomeActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener, RecyclerViewAdapter.ItemListener {
 
     //    Component Initlization
@@ -73,18 +72,11 @@ public class HomeScreenActivity extends AppCompatActivity
                             @Override
                             public void onDataChange(DataSnapshot dataSnapshot) {
 
-                                Toast.makeText(HomeScreenActivity.this, "Welcome " + dataSnapshot.child(auth.getCurrentUser().getUid()).child(AppConstant.FIREBASE_TABLE_FULLNAME).getValue().toString(), Toast.LENGTH_SHORT).show();
+                                Toast.makeText(HomeActivity.this, "Welcome " + dataSnapshot.child(auth.getCurrentUser().getUid()).child(AppConstant.FIREBASE_TABLE_FULLNAME).getValue().toString(), Toast.LENGTH_SHORT).show();
                                 final String userName = dataSnapshot.child(auth.getCurrentUser().getUid()).child(AppConstant.FIREBASE_TABLE_FULLNAME).getValue().toString();
                                 final String userEmail = dataSnapshot.child(auth.getCurrentUser().getUid()).child(AppConstant.FIREBASE_TABLE_EMAIL).getValue().toString();
-                                final String department = dataSnapshot.child(auth.getCurrentUser().getUid()).child(AppConstant.FIREBASE_DEPARTMENT).getValue().toString();
                                 userNameTv.setText(userName);
                                 userEmailTv.setText(userEmail);
-
-                                final String topicName = department.replace(" ", "_");
-                                FirebaseMessaging.getInstance().subscribeToTopic(topicName);
-
-                                Log.e("DEPART", department);
-                                Toast.makeText(HomeScreenActivity.this, "" + department, Toast.LENGTH_SHORT).show();
                             }
 
                             @Override
@@ -102,16 +94,9 @@ public class HomeScreenActivity extends AppCompatActivity
                             @Override
                             public void onDataChange(DataSnapshot dataSnapshot) {
 
-                                Toast.makeText(HomeScreenActivity.this, "Welcome " + dataSnapshot.child(auth.getCurrentUser().getUid()).child(AppConstant.FIREBASE_TABLE_FULLNAME).getValue().toString(), Toast.LENGTH_SHORT).show();
+                                Toast.makeText(HomeActivity.this, "Welcome " + dataSnapshot.child(auth.getCurrentUser().getUid()).child(AppConstant.FIREBASE_TABLE_FULLNAME).getValue().toString(), Toast.LENGTH_SHORT).show();
                                 final String userName = dataSnapshot.child(auth.getCurrentUser().getUid()).child(AppConstant.FIREBASE_TABLE_FULLNAME).getValue().toString();
                                 final String userEmail = dataSnapshot.child(auth.getCurrentUser().getUid()).child(AppConstant.FIREBASE_TABLE_EMAIL).getValue().toString();
-                                final String department = dataSnapshot.child(auth.getCurrentUser().getUid()).child(AppConstant.FIREBASE_DEPARTMENT).getValue().toString();
-
-                                final String topicName = department.replace(" ", "_");
-                                FirebaseMessaging.getInstance().subscribeToTopic(topicName);
-
-                                Log.e("DEPART", department);
-                                Toast.makeText(HomeScreenActivity.this, "" + department, Toast.LENGTH_SHORT).show();
                                 userNameTv.setText(userName);
                                 userEmailTv.setText(userEmail);
                             }
@@ -187,19 +172,13 @@ public class HomeScreenActivity extends AppCompatActivity
                 break;
 
             case R.id.menu_aprove_student:
-                final Intent gotoStudentRequest = new Intent(HomeScreenActivity.this, StudentReuqestListActivity.class);
+                final Intent gotoStudentRequest = new Intent(HomeActivity.this, StudentReuqestListActivity.class);
                 startActivity(gotoStudentRequest);
                 break;
             case R.id.menu_send_notification:
-                final Intent gotoSendNotification = new Intent(HomeScreenActivity.this, SendNotificatioActivity.class);
+                final Intent gotoSendNotification = new Intent(HomeActivity.this, SendNotificatioActivity.class);
                 startActivity(gotoSendNotification);
                 break;
-            case R.id.menu_profile:
-                final Intent gotoProfile = new Intent(HomeScreenActivity.this, ProfileActivity.class);
-                gotoProfile.putExtra("KEY_LOGIN_TYPE", loginType);
-                startActivity(gotoProfile);
-
-
         }
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
@@ -209,26 +188,24 @@ public class HomeScreenActivity extends AppCompatActivity
     @Override
     public void onItemClick(HomeMenuItemModel item) {
 
-
-        if (item.text.equals(getString(R.string.contactus))) {
-            final Intent gotoLocation = new Intent(HomeScreenActivity.this, CollegeLocationActivity.class);
-            startActivity(gotoLocation);
-        } else if (item.text.equals(getString(R.string.sbifees))) {
-            openSBITab();
-        } else if (item.text.equals(getString(R.string.department))) {
-            final Intent gotoDepartment = new Intent(HomeScreenActivity.this, DepartmentListActivity.class);
-            startActivity(gotoDepartment);
-        } else if (item.text.equals(getString(R.string.aboutus))) {
-            final Intent gotoAboutUs = new Intent(HomeScreenActivity.this, AboutActivity.class);
-            startActivity(gotoAboutUs);
-        } else if (item.text.equals(getString(R.string.notification))) {
-            final Intent gotoShowNotification = new Intent(HomeScreenActivity.this, ShowNotificationActivity.class);
-            startActivity(gotoShowNotification);
-        } else if (item.text.equals(getString(R.string.gallery))) {
-            Toast.makeText(this, "GALLERY", Toast.LENGTH_SHORT).show();
-            final Intent gotoGallery = new Intent(HomeScreenActivity.this, GalleryActivity.class);
-            startActivity(gotoGallery);
-        }
+//
+//        if (item.text.equals(getString(R.string.contactus))) {
+//            final Intent gotoLocation = new Intent(HomeActivity.this, CollegeLocationActivity.class);
+//            startActivity(gotoLocation);
+//        } else if (item.text.equals(getString(R.string.sbifees))) {
+//            openSBITab();
+//        } else if (item.text.equals(getString(R.string.department))) {
+//            final Intent gotoDepartment = new Intent(HomeActivity.this, DepartmentListActivity.class);
+//            startActivity(gotoDepartment);
+//        } else if (item.text.equals(getString(R.string.aboutus))) {
+//            Toast.makeText(this, "GALLERY2", Toast.LENGTH_SHORT).show();
+//            final Intent gotoAboutUs = new Intent(HomeActivity.this, AboutActivity.class);
+//            startActivity(gotoAboutUs);
+//        } else if (item.text.equals(getString(R.string.gallery))) {
+//            Toast.makeText(this, "GALLERY", Toast.LENGTH_SHORT).show();
+//            final Intent gotoGallery = new Intent(HomeActivity.this, GalleryActivity.class);
+//            startActivity(gotoGallery);
+//        }
     }
 
     private void openSBITab() {

@@ -90,6 +90,9 @@
             android:label="@string/notification" />
         <activity android:name=".DepartmentDetailsActivity" />
         <activity android:name=".FacultyDetailsActivity"></activity>
+        <activity android:name=".GalleryActivity"></activity>
+        <activity android:name=".ProfileActivity"></activity>
+
     </application>
 
 </manifest>

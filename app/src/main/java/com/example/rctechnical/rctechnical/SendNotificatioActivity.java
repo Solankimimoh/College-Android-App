@@ -153,7 +153,7 @@ public class SendNotificatioActivity extends AppCompatActivity implements View.O
 
     private void sendFCMPush() {
 
-        final String Legacy_SERVER_KEY = "AIzaSyAJErnfgVv26GRuqppdYvOSho93YaNGwjE";
+        final String Legacy_SERVER_KEY = "AIzaSyDJQkLugdCA_-IGBuWDXf6opS-7WF1syYs";
         String msg =  notificationTitleEd.getText().toString().trim();
         String title =notificationDescriptioEd.getText().toString().trim();
         //  String token = FCM_RECEIVER_TOKEN;
